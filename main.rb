@@ -12,8 +12,15 @@ class Brave
     @offense = offense
   end
 
-  def defence(defence)
-    @defence = defence
+  def defense=(defense)
+    @defense = defense
   end
 
 end
+
+brave = Brave.new
+
+brave.name = "テリー"
+brave.hp = 500
+brave.offense = 150
+brave.defense = 100
