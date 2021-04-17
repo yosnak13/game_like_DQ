@@ -42,7 +42,9 @@ brave.hp = 500
 brave.offense = 150
 brave.defense = 100
 
-puts brave.name
-puts brave.hp
-puts brave.offense
-puts brave.defense
+puts <<~TEXT
+NAME:#{brave.name}
+HP:#{brave.hp}
+OFFENSE:#{brave.offense}
+DEFENSE:#{brave.defense}
+TEXT
