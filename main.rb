@@ -11,6 +11,11 @@ class Brave
     @defense = params[:defense]
   end
 
+  def attack(monster)
+    damage = @offense - monster.defense
+    puts monster.hp - damage
+  end
+
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
   #initializeで不要に
   # def name=(name)
@@ -23,32 +28,18 @@ class Brave
   #   @name
   # end
 
-  # def hp
-  #   @hp
-  # end
-
-  # def offense
-  #   @offense
-  # end
-
-  # def defense
-  #   @defense
-  # end
-
 end
 
-brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
+# puts <<~TEXT
+# NAME:#{brave.name}
+# HP:#{brave.hp}
+# OFFENSE:#{brave.offense}
+# DEFENSE:#{brave.defense}
+# TEXT
 
-puts <<~TEXT
-NAME:#{brave.name}
-HP:#{brave.hp}
-OFFENSE:#{brave.offense}
-DEFENSE:#{brave.defense}
-TEXT
+# brave.hp -= 30
 
-brave.hp -= 30
-
-puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
+# puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
 
 
 class Monster
@@ -61,6 +52,8 @@ class Monster
     @offense = params[:offense]
     @defense = params[:defense]
   end
-
-  monster = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
 end
+
+brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
+monster = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
+brave.attack(monster)
