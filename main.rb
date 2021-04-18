@@ -1,10 +1,11 @@
 class Brave
 
-  def initialize
-    @name = "テリー"
-    @hp = 500
-    @offense = 150
-    @defense = 100
+  #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
+  def initialize(params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:pffense]
+    @defense = params[:defense]
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
@@ -32,7 +33,7 @@ class Brave
 
 end
 
-brave = Brave.new
+brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
 
 puts <<~TEXT
 NAME:#{brave.name}
