@@ -1,7 +1,9 @@
 class Brave
+  #attr_reader記述でゲッターを省略可能（アクセスメソッド）
+  attr_reader :name, :hp, :offense, :defense
 
   #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
-  def initialize(params)
+  def initialize(**params)
     @name = params[:name]
     @hp = params[:hp]
     @offense = params[:pffense]
@@ -15,21 +17,22 @@ class Brave
   # end
 
   #nameのゲッター（インスタンス変数の値を取得してクラス外から参照可能）
-  def name
-    @name
-  end
+  #attr_readerで不要に
+  # def name
+  #   @name
+  # end
 
-  def hp
-    @hp
-  end
+  # def hp
+  #   @hp
+  # end
 
-  def offense
-    @offense
-  end
+  # def offense
+  #   @offense
+  # end
 
-  def defense
-    @defense
-  end
+  # def defense
+  #   @defense
+  # end
 
 end
 
@@ -41,3 +44,4 @@ HP:#{brave.hp}
 OFFENSE:#{brave.offense}
 DEFENSE:#{brave.defense}
 TEXT
+
