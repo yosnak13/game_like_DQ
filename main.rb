@@ -12,8 +12,13 @@ class Brave
   end
 
   def attack(monster)
-    damage = @offense - monster.defense
-    puts monster.hp - damage
+    puts "#{@name}の攻撃"
+
+    damage = @offense - monster.defense #勇者の攻撃力
+    monster.hp -= damage #モンスターの残りHPの計算・処理
+
+    puts "#{monster.name}は#{damage}のダメージを受けた"
+    puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
