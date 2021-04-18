@@ -4,10 +4,10 @@ class Brave
   attr_accessor :hp #書き換えができるようにaccessorを利用
 
   #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
-  def initialize(**params)
+  def initialize(**params) #**は複数の引数をhashでまとめて受け取れる
     @name = params[:name]
     @hp = params[:hp]
-    @offense = params[:pffense]
+    @offense = params[:offense]
     @defense = params[:defense]
   end
 
@@ -49,3 +49,18 @@ TEXT
 brave.hp -= 30
 
 puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
+
+
+class Monster
+  attr_reader :name, :offense, :defense
+  attr_accessor :hp
+
+  # def initialize_monster(**params)
+  #   @name = params[:name]
+  #   @hp = params[:hp]
+  #   @offense = params[:offense]
+  #   @defense = params[:defense]
+  # end
+
+  # monster = Monster.new(name: "スライム", hp: 300, offense: 50, defense: 20)
+end
