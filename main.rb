@@ -1,6 +1,7 @@
 class Brave
   #attr_reader記述でゲッターを省略可能（アクセスメソッド）
-  attr_reader :name, :hp, :offense, :defense
+  attr_reader :name, :offense, :defense
+  attr_accessor :hp #書き換えができるようにaccessorを利用
 
   #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
   def initialize(**params)
@@ -45,3 +46,6 @@ OFFENSE:#{brave.offense}
 DEFENSE:#{brave.defense}
 TEXT
 
+brave.hp -= 30
+
+puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
