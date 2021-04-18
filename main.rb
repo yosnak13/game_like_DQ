@@ -14,11 +14,22 @@ class Brave
   def attack(monster)
     puts "#{@name}の攻撃"
 
-    damage = @offense - monster.defense #勇者の攻撃力
+    attack_num = rand(4) #0~3の間でランダムに数字が変わる
+
+    if attack_num == 0
+      damage = calculate_special_attack
+    else
+      damage = @offense - monster.defense
+    end
+
     monster.hp -= damage #モンスターの残りHPの計算・処理
 
     puts "#{monster.name}は#{damage}のダメージを受けた"
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
+  end
+
+  def calculate_special_attack
+    puts "calculate_special_attackが呼び出されました"
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
