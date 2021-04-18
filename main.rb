@@ -55,12 +55,12 @@ class Monster
   attr_reader :name, :offense, :defense
   attr_accessor :hp
 
-  # def initialize_monster(**params)
-  #   @name = params[:name]
-  #   @hp = params[:hp]
-  #   @offense = params[:offense]
-  #   @defense = params[:defense]
-  # end
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
+  end
 
-  # monster = Monster.new(name: "スライム", hp: 300, offense: 50, defense: 20)
+  monster = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
 end
