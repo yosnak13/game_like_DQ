@@ -3,6 +3,9 @@ class Brave
   attr_reader :name, :offense, :defense
   attr_accessor :hp #書き換えができるようにaccessorを利用
 
+  #必殺攻撃の計算に使う定数
+  SPECIAL_ATTACK_CONSTANT = 1.5
+
   #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
   def initialize(**params) #**は複数の引数をhashでまとめて受け取れる
     @name = params[:name]
@@ -17,8 +20,11 @@ class Brave
     attack_num = rand(4) #0~3の間でランダムに数字が変わる
 
     if attack_num == 0
-      damage = calculate_special_attack
+      puts "必殺攻撃"
+      # 攻撃力の1.5倍の数値が戻り値として返ってくる
+      damage = calculate_special_attack - monster.defense
     else
+      puts "通常攻撃"
       damage = @offense - monster.defense
     end
 
@@ -29,7 +35,7 @@ class Brave
   end
 
   def calculate_special_attack
-    puts "calculate_special_attackが呼び出されました"
+    @offense * SPECIAL_ATTACK_CONSTANT
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
