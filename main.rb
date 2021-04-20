@@ -69,39 +69,29 @@ class Monster
   attr_accessor :hp
 
   POWER_UP_RATE = 1.5
+  CALC_HALF_HP = 0.5
 
-  # def initialize(**params)
-  #   @name = params[:name]
-  #   @hp = params[:hp]
-  #   @offense = params[:offense]
-  #   @defense = params[:defense]
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
 
-  #   def metamorphose
-  #     if @name.hp
-  #   end
-  # end
+    @transform_flag = false
+    @trigger_of_transform = params[:hp] * CALC_HALF_HP
+  end
 
   def attack(brave)
     puts "#{@name}の攻撃"
+    
+    damage = @offense - brave.defense
+    brave.hp -= damage
 
-    if monster.hp > moster.hp*0.5
-      puts "通常攻撃"
-      damage = @offense - brave.defense
-    else
-      puts <<~TEXT
-      "#{monster.name}は怒っている"
-      "#{monster}はドラゴンに返信した"
-      "ドラゴンの攻撃"
-      TEXT
+    puts <<~TEXT
+    #{brave}は#{damage}のダメージを受けた
+    #{brave}の残りHPは#{brave.hp}だ
+    TEXT
 
-      damage = calculate_special_attack - brave.defense
-
-      puts <<~TEXT
-      #{brave}は#{damage}のダメージを受けた
-      #{brave}の残りHPは#{brave.hp}だ
-      TEXT
-      brave.hp -= damage
-    end
   end
 
   def calculate_special_attack
