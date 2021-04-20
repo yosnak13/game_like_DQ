@@ -68,11 +68,44 @@ class Monster
   attr_reader :name, :offense, :defense
   attr_accessor :hp
 
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
+  POWER_UP_RATE = 1.5
+
+  # def initialize(**params)
+  #   @name = params[:name]
+  #   @hp = params[:hp]
+  #   @offense = params[:offense]
+  #   @defense = params[:defense]
+
+  #   def metamorphose
+  #     if @name.hp
+  #   end
+  # end
+
+  def attack(brave)
+    puts "#{@name}の攻撃"
+
+    if monster.hp > moster.hp*0.5
+      puts "通常攻撃"
+      damage = @offense - brave.defense
+    else
+      puts <<~TEXT
+      "#{monster.name}は怒っている"
+      "#{monster}はドラゴンに返信した"
+      "ドラゴンの攻撃"
+      TEXT
+
+      damage = calculate_special_attack - brave.defense
+
+      puts <<~TEXT
+      #{brave}は#{damage}のダメージを受けた
+      #{brave}の残りHPは#{brave.hp}だ
+      TEXT
+      brave.hp -= damage
+    end
+  end
+
+  def calculate_special_attack
+    @offense * SPECIAL_ATTACK_CONSTANT
   end
 end
 
