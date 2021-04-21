@@ -30,19 +30,17 @@ class Brave
     monster.hp -= damage #モンスターの残りHPの計算・処理
     puts "#{monster.name}は#{damage}のダメージを受けた"
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
+  end
 
-    #攻撃の種類を判定するメソッド
-    def decision_attack_type
-      attack_num = rand(4) #0~3の間でランダムに数字が変わる
+  #攻撃の種類を判定するメソッド
+  def decision_attack_type
+    attack_num = rand(4) #0~3の間でランダムに数字が変わる
 
-      if attack_num == 0
-        "special_attack"
-      else
-        "normal_attack"
-      end
+    if attack_num == 0
+      "special_attack"
+    else
+      "normal_attack"
     end
-
-
   end
 
   def calculate_special_attack
@@ -69,11 +67,6 @@ end
 # OFFENSE:#{brave.offense}
 # DEFENSE:#{brave.defense}
 # TEXT
-
-# brave.hp -= 30
-
-# puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
-
 
 class Monster
   attr_reader :offense, :defense
