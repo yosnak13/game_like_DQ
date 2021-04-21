@@ -65,8 +65,8 @@ end
 
 
 class Monster
-  attr_reader :name, :offense, :defense
-  attr_accessor :hp
+  attr_reader :offense, :defense
+  attr_accessor :hp, :name
 
   POWER_UP_RATE = 1.5
   CALC_HALF_HP = 0.5
