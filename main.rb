@@ -82,8 +82,12 @@ class Monster
   end
 
   def attack(brave)
+    if @hp <= @trigger_of_transform && @transform_flag == false
+      @transform_flag = true
+      transform
+    end
     puts "#{@name}の攻撃"
-    
+
     damage = @offense - brave.defense
     brave.hp -= damage
 
@@ -94,8 +98,9 @@ class Monster
 
   end
 
-  def calculate_special_attack
-    @offense * SPECIAL_ATTACK_CONSTANT
+  private
+  def transform
+    
   end
 end
 
