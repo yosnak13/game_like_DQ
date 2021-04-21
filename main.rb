@@ -82,6 +82,7 @@ class Monster
   end
 
   def attack(brave)
+    #hp半分以下かつ、変身判定フラグがfalseの時に実行
     if @hp <= @trigger_of_transform && @transform_flag == false
       @transform_flag = true
       transform
@@ -92,18 +93,28 @@ class Monster
     brave.hp -= damage
 
     puts <<~TEXT
-    #{brave}は#{damage}のダメージを受けた
-    #{brave}の残りHPは#{brave.hp}だ
+    #{brave.name}は#{damage}のダメージを受けた
+    #{brave.name}の残りHPは#{brave.hp}だ
     TEXT
 
   end
 
   private
   def transform
-    
+
+    transform_name = "ドラゴン"
+
+    puts <<~EOS
+    #{@name}は怒っている
+    #{@name}はドラゴンに変身した
+    EOS
+
+    @offense *= POWER_UP_RATE
+    @name = transform_name
   end
 end
 
 brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
 monster = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
 brave.attack(monster)
+monster.attack(brave)
