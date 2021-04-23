@@ -21,9 +21,8 @@ class Brave
 
     damage = calculate_damage(monster, attack_type)
 
-    monster.hp -= damage #モンスターの残りHPの計算・処理
+    cause_damage(monster, damage)
 
-    puts "#{monster.name}は#{damage}のダメージを受けた"
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
@@ -51,6 +50,11 @@ class Brave
 
   def calculate_special_attack
     @offense * SPECIAL_ATTACK_CONSTANT
+  end
+
+  def cause_damage(monster, damage)
+    monster.hp -= damage
+    puts "#{monster.name}は#{damage}のダメージを受けた"
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
