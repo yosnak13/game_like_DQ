@@ -95,7 +95,8 @@ class Monster
     end
     puts "#{@name}の攻撃"
 
-    damage = @offense - brave.defense
+    damage = calculate_damage(brave)
+    
     brave.hp -= damage
 
     puts <<~TEXT
@@ -106,8 +107,12 @@ class Monster
   end
 
   private
-  def transform
 
+  def calculate_damage(target)
+    @offense - target.defense
+  end
+
+  def transform
     transform_name = "ドラゴン"
 
     puts <<~EOS
