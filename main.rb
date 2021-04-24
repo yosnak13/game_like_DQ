@@ -10,7 +10,7 @@ class Character
   end
 end
 
-class Brave
+class Brave < Character
   #attr_reader記述でゲッターを省略可能（アクセスメソッド）
   attr_reader :name, :offense, :defense
   attr_accessor :hp #書き換えができるようにaccessorを利用
@@ -81,7 +81,7 @@ class Brave
 end
 
 
-class Monster
+class Monster < Characrter
   attr_reader :offense, :defense
   attr_accessor :hp, :name
 
