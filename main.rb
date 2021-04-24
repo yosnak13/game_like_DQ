@@ -19,9 +19,10 @@ class Brave
 
     attack_type = decision_attack_type
 
-    damage = calculate_damage(monster, attack_type)
-
-    cause_damage(monster, damage)
+    # damage = calculate_damage(monster, attack_type)
+    damage = calculate_damage(target: monster, attack_type: attack_type)
+    # cause_damage(monster, damage)
+    cause_damage(target: monster, damage: damage)
 
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
@@ -40,11 +41,15 @@ class Brave
   end
 
   #ダメージ計算メソッド
-  def calculate_damage(monster, attack_type)
+  def calculate_damage(**params) #paramsで受け取る
+    #変数に格納することによって将来のハッシュのキー
+    target = params[:target]
+    attack_type = params[:attack_type]
+
     if attack_type == "special_attack"
-      calculate_special_attack - monster.defense
+      calculate_special_attack - target.defense
     else
-      @offense - monster.defense
+      @offense - target.defense
     end
   end
 
@@ -52,9 +57,12 @@ class Brave
     @offense * SPECIAL_ATTACK_CONSTANT
   end
 
-  def cause_damage(monster, damage)
-    monster.hp -= damage
-    puts "#{monster.name}は#{damage}のダメージを受けた"
+  def cause_damage(**params)
+    damage = params[:damage]
+    target = params[:target]
+
+    target.hp -= damage
+    puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
   #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
@@ -71,12 +79,6 @@ class Brave
 
 end
 
-# puts <<~TEXT
-# NAME:#{brave.name}
-# HP:#{brave.hp}
-# OFFENSE:#{brave.offense}
-# DEFENSE:#{brave.defense}
-# TEXT
 
 class Monster
   attr_reader :offense, :defense
