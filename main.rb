@@ -99,11 +99,7 @@ class Monster
 
     cause_damage(target: brave, damage: damage)
 
-    puts <<~TEXT
-    #{brave.name}は#{damage}のダメージを受けた
-    #{brave.name}の残りHPは#{brave.hp}だ
-    TEXT
-
+    puts "#{brave.name}の残りHPは#{brave.hp}だ"
   end
 
   private
@@ -135,5 +131,8 @@ end
 
 brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
 monster = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
-brave.attack(monster)
-monster.attack(brave)
+
+# loop do
+#   brave.attack(monster)
+#   monster.attack(brave)
+# end
