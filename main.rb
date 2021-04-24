@@ -2,6 +2,7 @@ class Character
   attr_reader :offense, :defense
   attr_accessor :hp, :name
 
+  #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
   def initialize(**params)
     @name = params[:name]
     @hp = params[:hp]
@@ -11,20 +12,9 @@ class Character
 end
 
 class Brave < Character
-  #attr_reader記述でゲッターを省略可能（アクセスメソッド）
-  attr_reader :name, :offense, :defense
-  attr_accessor :hp #書き換えができるようにaccessorを利用
 
   #必殺攻撃の計算に使う定数
   SPECIAL_ATTACK_CONSTANT = 1.5
-
-  #new演算子から渡された引数（ハッシュ形式のみ）を受け取る
-  def initialize(**params) #**は複数の引数をhashでまとめて受け取れる
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
 
   def attack(monster)
     puts "#{@name}の攻撃"
@@ -82,9 +72,6 @@ end
 
 
 class Monster < Characrter
-  attr_reader :offense, :defense
-  attr_accessor :hp, :name
-
   POWER_UP_RATE = 1.5
   CALC_HALF_HP = 0.5
 
