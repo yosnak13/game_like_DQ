@@ -18,10 +18,7 @@ class Brave
     puts "#{@name}の攻撃"
 
     attack_type = decision_attack_type
-
-    # damage = calculate_damage(monster, attack_type)
     damage = calculate_damage(target: monster, attack_type: attack_type)
-    # cause_damage(monster, damage)
     cause_damage(target: monster, damage: damage)
 
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
@@ -65,6 +62,7 @@ class Brave
 
     target.hp -= damage
     target.hp = 0 if target.hp < 0 #マイナスになるときは0を代入
+
     puts "#{target.name}は#{damage}のダメージを受けた"
   end
 
@@ -97,7 +95,6 @@ class Monster
     puts "#{@name}の攻撃"
 
     damage = calculate_damage(brave)
-
     cause_damage(target: brave, damage: damage)
 
     puts "#{brave.name}の残りHPは#{brave.hp}だ"
@@ -144,16 +141,16 @@ loop do
   if brave.hp <= 0
     break
   end
+end
 
-  battle_result = brave.hp > 0
+battle_result = brave.hp > 0
 
-  if battle_result
-    exp = (monster.offense + monster.defense) * 2
-    gold = (monster.offense + monster.defense) * 3
-    puts "#{brave.name}は戦いに勝った"
-    puts "#{exp}の経験値と#{gold}ゴールドを獲得した"
-  else
-    puts "#{brave.name}は戦いに負けた"
-    puts "目の前が真っ暗になった"
-  end
+if battle_result
+  exp = (monster.offense + monster.defense) * 2
+  gold = (monster.offense + monster.defense) * 3
+  puts "#{brave.name}は戦いに勝った"
+  puts "#{exp}の経験値と#{gold}ゴールドを獲得した"
+else
+  puts "#{brave.name}は戦いに負けた"
+  puts "目の前が真っ暗になった"
 end
