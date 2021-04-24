@@ -27,6 +27,8 @@ class Brave
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
+  private
+
   #攻撃の種類を判定するメソッド
   def decision_attack_type
     attack_num = rand(4) #0~3の間でランダムに数字が変わる
@@ -64,18 +66,6 @@ class Brave
     target.hp -= damage
     puts "#{target.name}は#{damage}のダメージを受けた"
   end
-
-  #nameのセッター（インスタンス変数の値をクラス内で更新するためのメソッド）
-  #initializeで不要に
-  # def name=(name)
-  #   @name = name
-  # end
-
-  #nameのゲッター（インスタンス変数の値を取得してクラス外から参照可能）
-  #attr_readerで不要に
-  # def name
-  #   @name
-  # end
 
 end
 
