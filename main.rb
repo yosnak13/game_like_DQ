@@ -1,4 +1,3 @@
-require './character'
 require './brave'
 require './monster'
 
