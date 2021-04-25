@@ -71,16 +71,20 @@ class Brave < Character
 end
 
 
-class Monster < Characrter
+class Monster < Character
   POWER_UP_RATE = 1.5
   CALC_HALF_HP = 0.5
 
   def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-
+    #キャラクタークラスのinitializeメソッドに処理を渡す
+    # 通常のメソッドと同様に引数を渡すことができる
+    super(
+      name: params[:name],
+      hp: params[:hp],
+      offense: params[:offense],
+      defense: params[:defense]
+    )
+    #親クラスで定義していない処理はそのまま残す
     @transform_flag = false
     @trigger_of_transform = params[:hp] * CALC_HALF_HP
   end
