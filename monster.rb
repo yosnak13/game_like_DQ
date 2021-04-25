@@ -1,3 +1,5 @@
+require './character'
+
 class Monster < Character
   POWER_UP_RATE = 1.5
   CALC_HALF_HP = 0.5

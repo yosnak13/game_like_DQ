@@ -1,3 +1,5 @@
+require './character'
+
 class Brave < Character
 
   #必殺攻撃の計算に使う定数
