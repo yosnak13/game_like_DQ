@@ -34,7 +34,7 @@ class GamesController
     brave.hp > 0
   end
 
-  def calculate_of_exp_and_gold(momster)
+  def calculate_of_exp_and_gold(monster)
     exp = (monster.offense + monster.defense) * EXP_CONSTANT
     gold = (monster.offense + monster.defense) * GOLD_CONSTANT
     result = {exp:exp, gold:gold}
