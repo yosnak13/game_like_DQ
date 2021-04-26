@@ -16,7 +16,7 @@ class GamesController
     if battle_result(brave)
       result = calculate_of_exp_and_gold(monster)
       puts "#{brave.name}は戦いに勝った"
-      puts "#{exp}の経験値と#{gold}ゴールドを獲得した"
+      puts "#{result[:exp]}の経験値と#{result[:gold]}ゴールドを獲得した"
     else
       puts "#{brave.name}は戦いに負けた"
       puts "目の前が真っ暗になった"
@@ -37,7 +37,7 @@ class GamesController
   def calculate_of_exp_and_gold(monster)
     exp = (monster.offense + monster.defense) * EXP_CONSTANT
     gold = (monster.offense + monster.defense) * GOLD_CONSTANT
-    result = {exp:exp, gold:gold}
+    result = {exp: exp, gold: gold}
 
     result
   end
