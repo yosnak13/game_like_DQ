@@ -3,8 +3,9 @@ class GamesController
   GOLD_CONSTANT = 3
 
   def battle(**params)
-    brave = params[:brave]
-    monster = params[:monster]
+    # brave = params[:brave]
+    # monster = params[:monster]
+    build_characters(params)
 
     loop do
       brave.attack(monster)
@@ -25,6 +26,12 @@ class GamesController
 
 
   private
+
+  # キャラクターのインスタンスをインスタンス変数に格納
+  def build_characters(**params)
+    @brave = params[:brave]
+    @monster = params[:monster]
+  end
 
   def battle_end?(character)
     character.hp <= 0
