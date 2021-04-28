@@ -3,8 +3,6 @@ class GamesController
   GOLD_CONSTANT = 3
 
   def battle(**params)
-    # brave = params[:brave]
-    # monster = params[:monster]
     build_characters(params)
 
     loop do
@@ -14,14 +12,6 @@ class GamesController
       break if battle_end?
     end
 
-    # if battle_result
-    #   result = calculate_of_exp_and_gold
-    #   puts "#{@brave.name}は戦いに勝った"
-    #   puts "#{result[:exp]}の経験値と#{result[:gold]}ゴールドを獲得した"
-    # else
-    #   puts "#{@brave.name}は戦いに負けた"
-    #   puts "目の前が真っ暗になった"
-    # end
     battle_judgement
   end
 
@@ -35,7 +25,6 @@ class GamesController
   end
 
   def battle_end?
-    # character.hp <= 0
     @brave.hp <= 0 || @monster.hp <= 0
   end
 
