@@ -8,18 +8,18 @@ class GamesController
     build_characters(params)
 
     loop do
-      brave.attack(monster)
-      break if battle_end?(monster)
-      monster.attack(brave)
-      break if battle_end?(brave)
+      @brave.attack(@monster)
+      break if battle_end?
+      @monster.attack(@brave)
+      break if battle_end?
     end
 
-    if battle_result(brave)
-      result = calculate_of_exp_and_gold(monster)
-      puts "#{brave.name}は戦いに勝った"
+    if battle_result
+      result = calculate_of_exp_and_gold
+      puts "#{@brave.name}は戦いに勝った"
       puts "#{result[:exp]}の経験値と#{result[:gold]}ゴールドを獲得した"
     else
-      puts "#{brave.name}は戦いに負けた"
+      puts "#{@brave.name}は戦いに負けた"
       puts "目の前が真っ暗になった"
     end
   end
@@ -33,17 +33,18 @@ class GamesController
     @monster = params[:monster]
   end
 
-  def battle_end?(character)
-    character.hp <= 0
+  def battle_end?
+    # character.hp <= 0
+    @brave.hp <= 0 || @monster.hp <= 0
   end
 
-  def battle_result(brave)
-    brave.hp > 0
+  def battle_result
+    @brave.hp > 0
   end
 
-  def calculate_of_exp_and_gold(monster)
-    exp = (monster.offense + monster.defense) * EXP_CONSTANT
-    gold = (monster.offense + monster.defense) * GOLD_CONSTANT
+  def calculate_of_exp_and_gold
+    exp = (@monster.offense + @monster.defense) * EXP_CONSTANT
+    gold = (@monster.offense + @monster.defense) * GOLD_CONSTANT
     result = {exp: exp, gold: gold}
 
     result
