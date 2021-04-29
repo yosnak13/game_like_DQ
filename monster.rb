@@ -28,7 +28,7 @@ class Monster < Character
     damage = calculate_damage(brave)
     cause_damage(target: brave, damage: damage)
 
-    attack_message
+    attack_message(target: brave)
     damage_message(target: brave, damage: damage)
   end
 
@@ -49,10 +49,7 @@ class Monster < Character
   def transform
     transform_name = "ドラゴン"
 
-    # puts <<~EOS
-    # #{@name}は怒っている
-    # #{@name}はドラゴンに変身した
-    # EOS
+    transform_message(origin_name: @name, trandfrom_name: transform_name)
 
     @offense *= POWER_UP_RATE
     @name = transform_name
