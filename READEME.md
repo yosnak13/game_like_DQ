@@ -9,3 +9,6 @@ Railsは使いません
 
 # Usage
 commandline上で動作させます
+
+#branch-test
+main/ develop/feature
